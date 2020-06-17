@@ -1,0 +1,43 @@
+{
+  "name": "wx-miniapp-before-hook",
+  "version": "1.0.0",
+  "description": "add some hooks for wx miniapp",
+  "main": "dist/wx-miniapp-mixins.js",
+  "module": "dist/wx-miniapp-mixins.js",
+  "keywords": [
+    "before",
+    "beforeOnLoad",
+    "beforeOnShow",
+    "wx-miniapp-before-hook"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "jest"
+  },
+  "author": "kallsave <415034609@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/runtime": "^7.10.2",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^5.2.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
+    "ncp": "^2.0.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.1.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "terser": "^4.3.9",
+    "zlib": "^1.0.5"
+  }
+}
