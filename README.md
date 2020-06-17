@@ -17,7 +17,7 @@ npm install wx-miniapp-before-hook --save
 ```javascript
 // app.js
 // 导入js给App,Page增加before扩展
-import 'wx-miniapp-before-hook'
+import './miniprogram_npm/wx-miniapp-before-hook/index'
 ```
 
 ```javascript
