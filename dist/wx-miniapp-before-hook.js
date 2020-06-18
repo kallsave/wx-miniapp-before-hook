@@ -1,5 +1,5 @@
 /*!
- * wx-miniapp-before-hook.js v1.0.1
+ * wx-miniapp-before-hook.js v1.0.2
  * (c) 2019-2020 kallsave <415034609@qq.com>
  * Released under the MIT License.
  */
@@ -79,7 +79,7 @@ const plugin = {
     appInstaller.install();
     pageInstaller.install();
   },
-  verson: '1.0.1'
+  verson: '1.0.2'
 };
 
 plugin.install();
