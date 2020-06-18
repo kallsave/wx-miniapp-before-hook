@@ -10,7 +10,7 @@ const plugin = {
     appInstaller.install()
     pageInstaller.install()
   },
-  verson: '1.0.0'
+  verson: 'VERSION'
 }
 
 plugin.install()

@@ -18,8 +18,9 @@ export default {
         if (typeof beforeHook === 'function') {
           const originHook = options[hookName]
           options[hookName] = function () {
-            beforeHook(arguments, () => {
-              originHook.apply(this, arguments)
+            const args = arguments
+            beforeHook(...args, () => {
+              originHook.apply(this, args)
             })
           }
         }
