@@ -59,14 +59,12 @@ Page({
 
   },
   // 在这个钩子里可以抽离一些通用异步逻辑,比如小程序登录
-  async beforeShow(e, next) {
-    // e和onLaunch的e是同一个对象
-    console.log(e)
+  async beforeShow(next) {
     await checkLogin()
     // next执行后onShow开始执行
     next()
   },
-  onShow(e) {
+  onShow() {
 
   }
 })
