@@ -38,21 +38,27 @@ const options = {
   async beforeOnLaunch(e, next) {
     beforeOnLauchArg = e
     await getOnLaunchData()
-    onLauchList.push('beforeOnLaunch')
+    this.pushOnLauchList('beforeOnLaunch')
     next()
   },
   onLaunch(e) {
     onLauchArg = e
-    onLauchList.push('onLaunch')
+    this.pushOnLauchList('onLaunch')
   },
   beforeOnShow(e, next) {
     beforeOnShowArg = e
-    onShowList.push('beforeOnShow')
+    this.pushOnShowList('beforeOnShow')
     next()
   },
   onShow(e) {
     onShowArg = e
-    onShowList.push('onShow')
+    this.pushOnShowList('onShow')
+  },
+  pushOnLauchList(item) {
+    onLauchList.push(item)
+  },
+  pushOnShowList(item) {
+    onShowList.push(item)
   }
 }
 

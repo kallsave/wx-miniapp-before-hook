@@ -6,9 +6,6 @@ const onShowList = []
 let beforeOnLoadArg
 let onLauchArg
 
-let beforeOnShowArg
-let onShowArg
-
 let getOnLoadDataPromise
 let getOnShowDataPromise
 
@@ -37,22 +34,27 @@ function getOnShowData() {
 const options = {
   async beforeOnLoad(e, next) {
     beforeOnLoadArg = e
-    await getOnLoadData()
-    onLoadList.push('beforeOnLoad')
+    getOnLoadData()
+    this.pushOnLoadList('beforeOnLoad')
     next()
   },
   onLoad(e) {
     onLauchArg = e
-    onLoadList.push('onLoad')
+    this.pushOnLoadList('onLoad')
   },
-  beforeOnShow(e, next) {
-    beforeOnShowArg = e
-    onShowList.push('beforeOnShow')
+  async beforeOnShow(next) {
+    await getOnShowData()
+    this.pushOnShowList('beforeOnShow')
     next()
   },
-  onShow(e) {
-    onShowArg = e
-    onShowList.push('onShow')
+  onShow() {
+    this.pushOnShowList('onShow')
+  },
+  pushOnLoadList(item) {
+    onLoadList.push(item)
+  },
+  pushOnShowList(item) {
+    onShowList.push(item)
   }
 }
 
@@ -67,10 +69,6 @@ describe('test app before hook', () => {
 
   it('beforeOnLauch arg to be onLauch arg', () => {
     expect(beforeOnLoadArg).toBe(onLauchArg)
-  })
-
-  it('beforeOnShow arg to be onShow arg', () => {
-    expect(beforeOnShowArg).toBe(onShowArg)
   })
 
   it('beforeOnLoad next success', () => {
