@@ -1,6 +1,6 @@
 {
   "name": "wx-miniapp-before-hook",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "add some hooks for wx miniapp",
   "main": "dist/wx-miniapp-before-hook.js",
   "module": "dist/wx-miniapp-before-hook.js",

@@ -17,11 +17,17 @@ export default {
         const beforeHook = options[beforeHookName]
         if (typeof beforeHook === 'function') {
           const originHook = options[hookName]
-          options[hookName] = function () {
+          options[hookName] = function (e) {
             const args = arguments
-            beforeHook(...args, () => {
-              originHook.apply(this, args)
-            })
+            if (args.length) {
+              beforeHook.call(this, ...args, () => {
+                originHook.apply(this, args)
+              })
+            } else {
+              beforeHook.call(this, () => {
+                originHook.apply(this)
+              })
+            }
           }
         }
       }

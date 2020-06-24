@@ -1,5 +1,5 @@
 /*!
- * wx-miniapp-before-hook.js v1.0.2
+ * wx-miniapp-before-hook.js v1.0.3
  * (c) 2019-2020 kallsave <415034609@qq.com>
  * Released under the MIT License.
  */
@@ -29,9 +29,15 @@ var appInstaller = {
           const originHook = options[hookName];
           options[hookName] = function () {
             const args = arguments;
-            beforeHook(...args, () => {
-              originHook.apply(this, args);
-            });
+            if (args.length) {
+              beforeHook.call(this, ...args, () => {
+                originHook.apply(this, args);
+              });
+            } else {
+              beforeHook.call(this, () => {
+                originHook.apply(this);
+              });
+            }
           };
         }
       }
@@ -57,11 +63,17 @@ var pageInstaller = {
         const beforeHook = options[beforeHookName];
         if (typeof beforeHook === 'function') {
           const originHook = options[hookName];
-          options[hookName] = function () {
+          options[hookName] = function (e) {
             const args = arguments;
-            beforeHook(...args, () => {
-              originHook.apply(this, args);
-            });
+            if (args.length) {
+              beforeHook.call(this, ...args, () => {
+                originHook.apply(this, args);
+              });
+            } else {
+              beforeHook.call(this, () => {
+                originHook.apply(this);
+              });
+            }
           };
         }
       }
@@ -79,7 +91,7 @@ const plugin = {
     appInstaller.install();
     pageInstaller.install();
   },
-  verson: '1.0.2'
+  verson: '1.0.3'
 };
 
 plugin.install();
